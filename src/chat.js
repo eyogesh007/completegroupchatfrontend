@@ -3,14 +3,16 @@ import axios from 'axios';
 import {useNavigate} from 'react-router';
 import Messageform from './Messageform.js';
 import './chat.css'
+import { useParams } from 'react-router-dom'
 const Chat=()=>{
 
     const [msg,setMsg]=useState("");
     const [res,setRes]=useState({});
     let navigate=useNavigate();
+    const params = useParams();
 
     useEffect(()=>{
-        axios.get('http://localhost:5000/chat',{headers:{'usertoken':localStorage.getItem('token')}}).then(res=>setRes(res.data))},[]);
+        axios.get(`http://localhost:5000/chat/${params.name}`,{headers:{'usertoken':localStorage.getItem('token')}}).then(res=>setRes(res.data))},[]);
 
     function setmessage(e){
         const m=e.target.value;
@@ -24,7 +26,8 @@ const Chat=()=>{
 
     async function putmessage(e){
         e.preventDefault();
-       await axios.post('http://localhost:5000/chat',{message:msg},{headers:{'usertoken':localStorage.getItem('token')}}).then((ress)=>{setRes(ress.data);});
+       await axios.post(`http://localhost:5000/chat/${params.name}`,{message:msg},{headers:{'usertoken':localStorage.getItem('token')}}).then((ress)=>{setRes(ress.data);});
+       setMsg('');
 
     }
     return(
@@ -39,6 +42,8 @@ const Chat=()=>{
         <input className="messageinput" type="text" name="msg" placeholder="enter message" value={msg} onChange={setmessage}/>
         <input className="messageinput" type="submit" />
         <button className="messageinput" style={{marginLeft:'30px'}} onClick={backtologin}>logout</button>
+        <button className="messageinput" style={{marginLeft:'30px'}} onClick={()=>navigate('/groupselect')}>Enter other group</button>
+
         </label>
         
     </form>

@@ -11,10 +11,20 @@
 
 .logininput{
     background-color: aliceblue;
-    margin-top: 5px;
+    margin-top: 15px;
     padding: 5px;
     border-radius: 25px;
     text-align: center;
     height:fit-content;
     width: fit-content;
+}
+
+.loginform1{
+    margin-top: 15px;
+    background-color: aqua;
+    width: fit-content;
+    padding: 30px;
+    border-radius: 2px;
+    border-color: black;
+    border-style: solid;
 }

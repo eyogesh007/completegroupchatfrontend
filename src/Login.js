@@ -31,13 +31,15 @@ const Login = (parms)=>{
 
     async function submitform (e){
       e.preventDefault();
-      await axios.post('http://localhost:5000/login',data).then(
+      console.log('fsFSFsfsf');
+      await axios.post(`http://localhost:5000/login`,data).then(
         res => {
+          console.log('ff');
          token=res.data;
         localStorage.setItem("token",res.data);}
     )
     if(token!=null){  
-      navigate('/chat');
+      navigate('/groupselect');
        }
        else
         navigate('/')
