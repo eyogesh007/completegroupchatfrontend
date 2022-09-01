@@ -1,13 +1,14 @@
+
 .messageform{
-background-color: burlywood;
-width: fit-content;
-padding:10px;
-margin:10px ;
-border-radius: 25px;
-margin-top: 87vh;
-}
-
-
+    background-color: burlywood;
+    width: fit-content;
+    position: fixed;
+    bottom: 0;
+    left:20;
+    padding:10px;
+    margin:10px ;
+    border-radius: 25px;
+    }
 
 .label{
     display: flex;
