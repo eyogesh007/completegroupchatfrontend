@@ -21,6 +21,7 @@ const Chat=()=>{
         const m=e.target.value;
         setMsg(m);
     }
+ 
 
     function backtologin(){
             localStorage.setItem("token",null);
@@ -37,24 +38,23 @@ const Chat=()=>{
 
     <div>
         <center>
-        <h3 style={{marginLeft:'15px'}}>Welcome to {params.name}</h3>
+        <h3 >Welcome to {params.name}</h3>
+        <a style={{textDecoration:'none'}} href='../groupselect'>Enter another group</a>
         </center>
     {Object.keys(res).map((value,index)=>{return (<Messageform key={index} username={res[value].username} msgs={res[value].message}></Messageform>)})}
         <br/>
-    <footer  style={{bottom:"10px", left: "0",position:"sticky"}}>
-    
+       
+        <footer  style={{bottom:"10px", left: "0",position:"sticky"}}>
     <form className="messageform" onSubmit={putmessage}>
         <label className="label">
         <input className="messageinput" type="text" name="msg" placeholder="enter message" value={msg} onChange={setmessage}/>
-        <input className="messageinput" type="submit" />
-        <button className="messageinput" style={{marginLeft:'30px'}} onClick={backtologin}>logout</button>
-        <button className="messageinput" style={{marginLeft:'30px'}} onClick={()=>navigate('/groupselect')}>Enter other group</button>
+        <input className="messageinput"style={{marginLeft:'5px'}} type="submit" />
+        <button className="messageinput" style={{marginLeft:'5px'}} onClick={backtologin}>logout</button>
 
         </label>
         
     </form>
-   
-    </footer>
+   </footer>
         </div>
     )
 }

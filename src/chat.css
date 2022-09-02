@@ -2,9 +2,6 @@
 .messageform{
     background-color: burlywood;
     width: fit-content;
-    position: fixed;
-    bottom: 0;
-    left:20;
     padding:10px;
     margin:10px ;
     border-radius: 25px;
@@ -17,11 +14,11 @@
 
 .messageinput{
     background-color: aliceblue;
-    margin-top: 5px;
     padding: 10px;
     text-align: center;
     height:fit-content;
     width: fit-content;
     border:0;
     background-color: bisque;
+    border-radius: 25px;
 }
