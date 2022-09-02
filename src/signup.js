@@ -27,7 +27,7 @@ const Signup = ()=>{
     function submitform(e){
       e.preventDefault();
       console.log(data);
-       axios.post(`http://localhost:5000/register`,data).then(
+       axios.post(`https://groupchatting.zebsy.in/register`,data).then(
         res => {alert(res.data);
           setData({
             username:'',
