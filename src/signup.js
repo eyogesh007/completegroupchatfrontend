@@ -27,7 +27,7 @@ const Signup = ()=>{
     function submitform(e){
       e.preventDefault();
       console.log(data);
-       axios.post(`https://groupchatting.zebsy.in/register`,data).then(
+       axios.post(`https://chatting-lemon.vercel.app/register`,data).then(
         res => {alert(res.data);
           setData({
             username:'',

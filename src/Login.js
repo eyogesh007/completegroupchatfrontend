@@ -32,7 +32,7 @@ const Login = (parms)=>{
     async function submitform (e){
       e.preventDefault();
       console.log('fsFSFsfsf');
-      await axios.post(`https://groupchatting.zebsy.in/login`,data).then(
+      await axios.post(`https://chatting-lemon.vercel.app/login`,data).then(
         res => {
           console.log('ff');
          token=res.data;

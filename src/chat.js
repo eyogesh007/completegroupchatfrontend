@@ -1,4 +1,4 @@
-import {useState,useEffect} from 'react';
+import {useState,useRef,useEffect} from 'react';
 import axios from 'axios';
 import {useNavigate} from 'react-router';
 import Messageform from './Messageform.js';
@@ -10,12 +10,12 @@ const Chat=()=>{
     const [res,setRes]=useState({});
     let navigate=useNavigate();
     const params = useParams();
-    
+
 
 
 
     useEffect(()=>{
-        axios.get(`https://groupchatting.zebsy.in/chat/${params.name}`,{headers:{'usertoken':localStorage.getItem('token')}}).then(res=>setRes(res.data))},[]);
+        axios.get(`https://chatting-lemon.vercel.app/chat/${params.name}`,{headers:{'usertoken':localStorage.getItem('token')}}).then(res=>setRes(res.data))},[]);
 
     function setmessage(e){
         const m=e.target.value;
@@ -30,13 +30,27 @@ const Chat=()=>{
 
     async function putmessage(e){
         e.preventDefault();
-       await axios.post(`https://groupchatting.zebsy.in/chat/${params.name}`,{message:msg},{headers:{'usertoken':localStorage.getItem('token')}}).then((ress)=>{setRes(ress.data);});
+       await axios.post(`https://chatting-lemon.vercel.app/chat/${params.name}`,{message:msg},{headers:{'usertoken':localStorage.getItem('token')}}).then((ress)=>{setRes(ress.data);});
        setMsg('');
 
     }
+
+    const bottom = useRef(null)
+
+  const scrollToBottom = () => {
+    bottom.current.scrollIntoView({ behavior: "smooth" })
+   
+  }
+
+ 
+
+  useEffect(() => {
+    scrollToBottom()
+  }, [msg]);
+
     return(
 
-    <div>
+    <div style={{marginBottom:'50px'}}>
         <center>
         <h3 >Welcome to {params.name}</h3>
         <a style={{textDecoration:'none'}} href='../groupselect'>Enter another group</a>
@@ -50,11 +64,13 @@ const Chat=()=>{
         <input className="messageinput" type="text" name="msg" placeholder="enter message" value={msg} onChange={setmessage}/>
         <input className="messageinput"style={{marginLeft:'5px'}} type="submit" />
         <button className="messageinput" style={{marginLeft:'5px'}} onClick={backtologin}>logout</button>
-
+        <input type="button" value="⬇" className="messageinput" style={{marginLeft:'5px'}} onClick={scrollToBottom}/>
         </label>
         
     </form>
+    
    </footer>
+   <div ref={bottom}></div>
         </div>
     )
 }
